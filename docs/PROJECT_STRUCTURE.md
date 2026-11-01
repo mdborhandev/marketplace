@@ -1,11 +1,11 @@
 # Project structure
 
-`src/PoshakGhor.Application` contains the ASP.NET Core host, Controllers, APIControllers/V1 and V2, Areas, Views, `wwwroot`, Middleware, Filters, Extensions, Configuration, Authentication, Swagger, and ViewModels. `src/PoshakGhor.Core` contains Models, DTOs, Interfaces, Enums, Constants, Contracts, Common types, and the API/pagination contracts. `src/PoshakGhor.DataAccess` contains Context, Configurations, Repositories, Services, UnitOfWork, Queries, Migrations, Extensions, and DependencyInjection. `src/PoshakGhor.Utilities` contains technical integration/helper folders. `tests` contains unit and integration projects. `docs` holds architecture and development references; `docker` holds local PostgreSQL configuration.
+`src/market.Application` contains the ASP.NET Core host, Controllers, APIControllers/V1 and V2, Areas, Views, `wwwroot`, Middleware, Filters, Extensions, Configuration, Authentication, Swagger, and ViewModels. `src/market.Core` contains Models, DTOs, Interfaces, Enums, Constants, Contracts, Common types, and the API/pagination contracts. `src/market.DataAccess` contains Context, Configurations, Repositories, Services, UnitOfWork, Queries, Migrations, Extensions, and DependencyInjection. `src/market.Utilities` contains technical integration/helper folders. `tests` contains unit and integration projects. `docs` holds architecture and development references; `docker` holds local PostgreSQL configuration.
 
 ```text
-PoshakGhor.sln
+market.sln
 ├── src
-│   ├── PoshakGhor.Application
+│   ├── market.Application
 │   │   ├── Controllers
 │   │   ├── APIControllers/{V1,V2}
 │   │   ├── Areas/{Admin,Vendor,Customer}
@@ -13,19 +13,19 @@ PoshakGhor.sln
 │   │   ├── wwwroot/{css,js,images,lib,uploads}
 │   │   ├── {Middleware,Filters,Extensions,Configuration,Authentication,Swagger,ViewModels}
 │   │   └── Program.cs, appsettings*.json
-│   ├── PoshakGhor.Core
+│   ├── market.Core
 │   │   ├── Models/{Common,Identity,Catalog,Inventory,Vendor,Order,Payment,Shipping}
 │   │   ├── DTOs/{Common,Requests,Responses}
 │   │   ├── Interfaces/{Repositories,Services,Infrastructure}
 │   │   ├── Contracts/{API,Pagination}
 │   │   └── {Enums,Constants,Common}
-│   ├── PoshakGhor.DataAccess
+│   ├── market.DataAccess
 │   │   └── {Context,Configurations,Repositories,Services,UnitOfWork,Queries,Migrations,Extensions,DependencyInjection}
-│   └── PoshakGhor.Utilities
+│   └── market.Utilities
 │       └── {Email,SMS,FileManagement,Payment,Logging,Helpers,Extensions,Common}
 ├── tests
-│   ├── PoshakGhor.UnitTests/{Services,Repositories,Common}
-│   └── PoshakGhor.IntegrationTests/{API,MVC,Database,Fixtures}
+│   ├── market.UnitTests/{Services,Repositories,Common}
+│   └── market.IntegrationTests/{API,MVC,Database,Fixtures}
 ├── docs
 └── docker/{docker-compose.yml,postgres}
 ```

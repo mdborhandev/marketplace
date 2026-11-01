@@ -1,6 +1,6 @@
 # Architecture
 
-PoshakGhor is a traditional layered monolith. One ASP.NET Core host serves Razor MVC pages and versioned REST APIs. Controllers share service abstractions as feature services are added.
+market is a traditional layered monolith. One ASP.NET Core host serves Razor MVC pages and versioned REST APIs. Controllers share service abstractions as feature services are added.
 
 | Project | Responsibility |
 |---|---|

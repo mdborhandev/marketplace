@@ -1,4 +1,4 @@
-# PoshakGhor
+# market
 
 Architecture and technical scaffolding for a Bangladesh-focused multi-vendor fashion marketplace. The application is a layered monolith targeting .NET 10: one ASP.NET Core host serves Razor MVC and the future versioned REST API.
 
