@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: poshakghor-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: poshakghor
+      POSTGRES_USER: poshakghor
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U poshakghor -d poshakghor"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
