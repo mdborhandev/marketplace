@@ -1,0 +1,65 @@
+﻿@using Halda.Core.DTO.Auth.UserMenusDTO
+@using Microsoft.AspNetCore.DataProtection;
+@using Newtonsoft.Json;
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+@inject IDataProtectionProvider provider
+@{
+    var protector = provider.CreateProtector("UserMenuPermissionProtector");
+    var menu = new List<UserMenusDTO>();
+
+    // Retrieve the encrypted UserMenus data from session
+    var sessionData = Context.Session.GetString("ProtectedMenus");
+
+    if (!string.IsNullOrEmpty(sessionData))
+    {
+        // Decrypt and deserialize the menu data
+        var decryptedData = protector.Unprotect(sessionData);
+        menu = JsonConvert.DeserializeObject<List<UserMenusDTO>>(decryptedData);
+    }
+
+    // Group menus by feature and ensure distinct menu items based on MenuId
+    var groupedMenus = menu
+        .Where(m => m.IsDisplay && m.ProductId == "3a786493-fcc2-4089-981d-847f7b939d6b") // Case-insensitive comparison
+        .OrderBy(m => m.ViewId) // Sort by ViewId in ascending order
+        .GroupBy(m => m.FeatureName) // Group by FeatureName
+        .Select(group => new
+        {
+            FeatureName = group.Key,
+            MenuItems = group.DistinctBy(m => m.MenuItemId) // Ensure distinct MenuId within each group
+        })
+        .ToList();
+}
+
+<ul class="menu-inner py-1">
+    @if (groupedMenus != null && groupedMenus.Any())
+    {
+        foreach (var featureGroup in groupedMenus)
+        {
+            // Filter out non-display menus
+            var visibleMenus = featureGroup.MenuItems.Where(menuItem => menuItem.IsDisplay).ToList();
+
+            if (visibleMenus.Any()) // Only render if there are visible menus
+            {
+                <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <img src="~/module_logo/@(featureGroup.FeatureName).svg" alt="Feature Icon" class="img-fluid menu-img">
+                        <div class="text-truncate" data-i18n="@featureGroup.FeatureName">
+                            @(string.IsNullOrEmpty(featureGroup.FeatureName) ? "Feature" : featureGroup.FeatureName)
+                        </div>
+                    </a>
+                    <ul class="menu-sub">
+                        @foreach (var menuItem in visibleMenus)
+                        {
+                            <li class="menu-item">
+                                <a asp-area="" asp-controller="@menuItem.Controller" asp-action="@menuItem.Action" class="menu-link">
+                                    @menuItem.Title
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        }
+    }
+</ul>
