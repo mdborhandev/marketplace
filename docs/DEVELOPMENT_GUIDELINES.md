@@ -6,6 +6,7 @@ Requirements: .NET SDK 10.0.112 or a later 10.0 patch, Docker Compose, and Postg
 dotnet restore market.sln
 dotnet build market.sln
 dotnet test market.sln
+dotnet run --project src/market.Application
 ```
 
 Start local PostgreSQL with `docker compose -f docker/docker-compose.yml up -d`. Supply `ConnectionStrings__PostgreSQL` and JWT environment variables as documented in `AUTHENTICATION.md`. Run the application with `dotnet run --project src/market.Application`. Swagger is enabled in Development; `/health` reports database connectivity. No migration is needed for the empty technical DbContext. The tests currently verify only technical startup/routing foundations.

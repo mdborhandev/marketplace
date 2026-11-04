@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat /home/borhan-uddin-fahim/Documents/Borhan/DRIVE\\\\ A/Projects/marketplace/docker/docker-compose.yml; ls /home/borhan-uddin-fahim/Documents/Borhan/DRIVE\\\\ A/Projects/marketplace/src/market.Application; dotnet --version 2>&1 | tail -1)"
+    ]
+  }
+}
