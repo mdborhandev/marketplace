@@ -9,4 +9,7 @@ public class HomeController : Controller
 
     [HttpGet("/shop")]
     public IActionResult Shop() => View("Index");
+
+    [HttpGet("/components")]
+    public IActionResult Components() => View();
 }

@@ -1,9 +1,14 @@
+@{
+    var activeAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var shopIsActive = activeAction == "Shop";
+    var componentsIsActive = activeAction == "Components";
+}
 <!doctype html>
 <html lang="en" dir="ltr" data-bs-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Marketplace</title>
+    <title>@ViewData["Title"] - PoshakGhor</title>
     <script>
         try {
             const savedTheme = localStorage.getItem('shelf.theme');
@@ -16,27 +21,71 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <div class="layout-wrapper layout-content-navbar layout-without-menu">
-        <div class="layout-container">
-            <div class="layout-page">
-                <nav class="layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
-                    <div class="navbar-nav-right d-flex align-items-center w-100">
-                        <a href="/shop" class="navbar-brand fw-semibold mb-0 market-brand"><span class="market-brand-mark" aria-hidden="true">P</span><span>Poshak<span class="market-brand-light">Ghor</span><small>CURATED FASHION</small></span></a>
-                        <div class="market-nav-links d-none d-md-flex" aria-label="Store navigation"><a href="/shop">Shop</a></div>
-                        <div class="market-nav-actions ms-auto"><a class="market-nav-cart" href="#showcase-products" aria-label="Shopping bag, 2 items"><i class="hgi hgi-stroke hgi-rounded hgi-shopping-bag-01" aria-hidden="true"></i><span>02</span></a><a class="btn btn-outline-secondary" href="/login">Sign in</a><button type="button" class="btn market-theme-switch" data-act="theme" aria-label="Switch to dark theme"><span class="market-theme-dot" aria-hidden="true"></span><span class="d-none d-sm-inline" data-theme-label>Dark mode</span></button></div>
-                    </div>
-                </nav>
+    <a class="skip" href="#main">Skip to content</a>
 
-                <div class="content-wrapper">
-                    <main class="container-xxl flex-grow-1 container-p-y" role="main">
-                        @RenderBody()
-                    </main>
-                    <footer class="content-footer footer bg-footer-theme"></footer>
-                    <div class="content-backdrop fade"></div>
-                </div>
-            </div>
+    <aside class="nav" aria-label="Main navigation">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">P</span>
+            <span class="brand-txt"><span class="brand-name">PoshakGhor</span><span class="brand-sub">MERCHANT STUDIO</span></span>
+            <button class="min-btn" type="button" data-act="min" aria-label="Collapse navigation" title="Collapse navigation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+            </button>
         </div>
+
+        <div class="nav-scroll">
+            <div class="nav-grp">Workspace</div>
+            <a class="nav-item @(shopIsActive ? "is-on" : "")" href="/shop" aria-current="@(shopIsActive ? "page" : null)">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" /></svg><span>Dashboard</span>
+            </a>
+            <a class="nav-item @(componentsIsActive ? "is-on" : "")" href="/components" aria-current="@(componentsIsActive ? "page" : null)">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /><rect x="13" y="13" width="8" height="8" rx="1.5" /></svg><span>Components</span>
+            </a>
+
+            <div class="nav-grp">Account</div>
+            <a class="nav-item" href="/login">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3" /><path d="M12 3h6a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3h-6" /></svg><span>Sign in</span>
+            </a>
+            <a class="nav-item" href="/register">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="4" /><path d="M3 21v-2a6 6 0 0 1 12 0v2M19 8v6M16 11h6" /></svg><span>Create account</span>
+            </a>
+        </div>
+
+        <div class="nav-foot">
+            <a class="store" href="/shop" aria-label="PoshakGhor merchant workspace">
+                <span class="store-dot" aria-hidden="true"></span><span class="store-name">PoshakGhor store</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+            </a>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="top">
+            <button class="icon-btn" id="mob-menu" type="button" data-act="mobnav" aria-label="Open navigation">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+            </button>
+            <h1>@ViewData["Title"]</h1>
+            <div class="d-flex align-items-center gap-2 ms-auto">
+                <a class="btn btn--ghost d-none d-sm-inline-flex" href="/components">Component reference</a>
+                <button class="btn btn--ghost" type="button" data-act="theme" aria-label="Switch theme">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 3a9 9 0 0 0 0 18z" /></svg><span class="d-none d-sm-inline" data-theme-label>Dark mode</span>
+                </button>
+                <a class="who" href="/login" aria-label="Sign in">PG</a>
+            </div>
+        </header>
+
+        <main class="page" id="main" role="main">
+            @RenderBody()
+        </main>
     </div>
+
+    <nav class="mobnav" aria-label="Quick navigation">
+        <a href="/shop" class="@(shopIsActive ? "is-on" : "")"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" /></svg>Shop</a>
+        <a href="/components" class="@(componentsIsActive ? "is-on" : "")"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /><rect x="13" y="13" width="8" height="8" rx="1.5" /></svg>Components</a>
+        <a href="/login"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3" /><path d="M12 3h6a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3h-6" /></svg>Account</a>
+    </nav>
+
+    <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+    <div id="toasts" aria-live="polite"></div>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/shelf/assets/vendor/chart.umd.min.js"></script>

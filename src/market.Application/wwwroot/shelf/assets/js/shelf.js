@@ -83,11 +83,17 @@
   S.toggleNav = function () {
     var on = document.body.classList.toggle("is-min");
     try { localStorage.setItem("shelf.min", on ? "1" : "0"); } catch (e) {}
+    document.querySelectorAll(".min-btn").forEach(function (button) {
+      button.setAttribute("aria-label", on ? "Expand navigation" : "Collapse navigation");
+      button.title = on ? "Expand navigation" : "Collapse navigation";
+    });
     setTimeout(S.resizeCharts, 240);
   };
   S.toggleMobileNav = function () {
     var on = document.body.classList.toggle("nav-open");
     document.getElementById("backdrop").classList.toggle("is-open", on);
+    var button = document.getElementById("mob-menu");
+    if (button) button.setAttribute("aria-label", on ? "Close navigation" : "Open navigation");
   };
 
   /* ============================= overlays ============================= */
@@ -666,6 +672,11 @@
       var st = sessionStorage.getItem("shelf.state");
       if (st) S.state = JSON.parse(st);
     } catch (e) {}
+    document.querySelectorAll(".min-btn").forEach(function (button) {
+      var label = document.body.classList.contains("is-min") ? "Expand navigation" : "Collapse navigation";
+      button.setAttribute("aria-label", label);
+      button.title = label;
+    });
 
     document.querySelectorAll("[data-kpis]").forEach(R.kpis);
     document.querySelectorAll("[data-table]").forEach(R.table);

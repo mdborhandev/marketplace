@@ -86,7 +86,7 @@ img{max-width:100%}
 *::-webkit-scrollbar-track{background:transparent}
 
 /* ============================== LAYOUT ============================== */
-.nav{position:fixed;inset-block:0;inset-inline-start:0;width:var(--nav-w);z-index:40;
+.nav{position:fixed;inset-block:0;inset-inline-start:0;width:var(--nav-w);z-index:55;
   background:var(--nav-bg);border-inline-end:1px solid var(--nav-line);
   display:flex;flex-direction:column;padding:18px 14px;transition:width var(--dur) var(--ease)}
 .main{margin-inline-start:var(--nav-w);min-height:100vh;transition:margin var(--dur) var(--ease)}
