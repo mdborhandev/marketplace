@@ -1,50 +1,10 @@
 <!doctype html>
-<html lang="en" class="layout-compact" dir="ltr" data-skin="default" data-market-theme="clearance" data-bs-theme="dark" data-assets-path="@Url.Content("~/marketplaceTheme/assets/")" data-template="marketplace">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Marketplace</title>
-    <script>
-        (() => {
-            let saved = null;
-            try {
-                saved = localStorage.getItem('poshakghor-theme');
-                if (saved !== 'clearance' && saved !== 'new-collections') {
-                    const legacyTheme = localStorage.getItem('templateCustomizer-marketplace--Theme');
-                    saved = legacyTheme === 'light' ? 'new-collections' : 'clearance';
-                }
-                localStorage.setItem('templateCustomizer-marketplace--Theme', saved === 'new-collections' ? 'light' : 'dark');
-            } catch { /* Continue with the default theme when storage is unavailable. */ }
-            const theme = saved === 'new-collections' ? 'new-collections' : 'clearance';
-            const root = document.documentElement;
-            root.dataset.marketTheme = theme;
-            root.dataset.bsTheme = theme === 'clearance' ? 'dark' : 'light';
-        })();
-    </script>
-    <link rel="preconnect" href="https://use.hugeicons.com" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.hugeicons.com/font/icons.css" />
-    <link id="core-theme" rel="stylesheet" href="~/marketplaceTheme/assets/vendor/css/core-dark.css" />
-    <link id="component-theme" rel="stylesheet" href="~/marketplaceTheme/assets/vendor/css/theme-default-dark.css" />
-    <link rel="stylesheet" href="~/marketplaceTheme/assets/css/demo.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/design-system.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
-    <script src="~/marketplaceTheme/assets/vendor/js/helpers.js"></script>
-    <script src="~/marketplaceTheme/assets/js/config.js"></script>
-    <script>
-        (() => {
-            const root = document.documentElement;
-            const coreTheme = document.getElementById('core-theme');
-            const componentTheme = document.getElementById('component-theme');
-            const updateThemeStyles = () => {
-                const dark = root.getAttribute('data-bs-theme') === 'dark';
-                coreTheme.href = `@Url.Content("~/marketplaceTheme/assets/vendor/css/")${dark ? 'core-dark.css' : 'core.css'}`;
-                componentTheme.href = `@Url.Content("~/marketplaceTheme/assets/vendor/css/")${dark ? 'theme-default-dark.css' : 'theme-default.css'}`;
-            };
-            new MutationObserver(updateThemeStyles).observe(root, { attributes: true, attributeFilter: ['data-bs-theme'] });
-            updateThemeStyles();
-        })();
-    </script>
 </head>
 <body>
     <div class="layout-wrapper layout-content-navbar layout-without-menu">
@@ -69,8 +29,6 @@
         </div>
     </div>
 
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
