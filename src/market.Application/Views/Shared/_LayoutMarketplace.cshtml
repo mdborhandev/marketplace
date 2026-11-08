@@ -1,9 +1,18 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-bs-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Marketplace</title>
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('shelf.theme');
+            if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        } catch { }
+    </script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/shelf/assets/css/fonts.css" />
+    <link rel="stylesheet" href="~/shelf/assets/css/shelf.css" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
@@ -14,7 +23,7 @@
                     <div class="navbar-nav-right d-flex align-items-center w-100">
                         <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand fw-semibold mb-0 market-brand"><span class="market-brand-mark" aria-hidden="true">P</span><span>Poshak<span class="market-brand-light">Ghor</span><small>CURATED FASHION</small></span></a>
                         <div class="market-nav-links d-none d-md-flex" aria-label="Store navigation"><a asp-controller="Home" asp-action="Index">Shop</a></div>
-                        <div class="market-nav-actions ms-auto"><a class="market-nav-cart" href="#showcase-products" aria-label="Shopping bag, 2 items"><i class="hgi hgi-stroke hgi-rounded hgi-shopping-bag-01" aria-hidden="true"></i><span>02</span></a><button type="button" class="btn market-theme-switch" data-theme-toggle aria-label="Switch to New Collections theme"><span class="market-theme-dot" aria-hidden="true"></span><span class="d-none d-sm-inline" data-theme-label>New Collections</span></button></div>
+                        <div class="market-nav-actions ms-auto"><a class="market-nav-cart" href="#showcase-products" aria-label="Shopping bag, 2 items"><i class="hgi hgi-stroke hgi-rounded hgi-shopping-bag-01" aria-hidden="true"></i><span>02</span></a><button type="button" class="btn market-theme-switch" data-act="theme" aria-label="Switch to dark theme"><span class="market-theme-dot" aria-hidden="true"></span><span class="d-none d-sm-inline" data-theme-label>Dark mode</span></button></div>
                     </div>
                 </nav>
 
@@ -29,6 +38,10 @@
         </div>
     </div>
 
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/shelf/assets/vendor/chart.umd.min.js"></script>
+    <script src="~/shelf/assets/js/shelf-data.js"></script>
+    <script src="~/shelf/assets/js/shelf.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
