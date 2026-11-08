@@ -4,5 +4,9 @@ namespace market.Application.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index() => View();
+    [HttpGet("/")]
+    public IActionResult Index() => RedirectToRoute("Login");
+
+    [HttpGet("/shop")]
+    public IActionResult Shop() => View("Index");
 }

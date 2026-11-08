@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Create account";
+}
+
+<section class="auth-card auth-card-register" aria-labelledby="register-title">
+    <span class="auth-kicker">A BETTER WAY TO SELL</span>
+    <h2 id="register-title">Create your account</h2>
+    <p class="auth-intro">Set up your merchant access to get started.</p>
+
+    <form autocomplete="on" onsubmit="return false;">
+        <div class="mb-3">
+            <label class="form-label" for="register-name">Your name</label>
+            <input class="form-control" id="register-name" name="name" autocomplete="name" placeholder="Full name" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="register-store">Store name</label>
+            <input class="form-control" id="register-store" name="store" autocomplete="organization" placeholder="Your boutique or brand" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="register-email">Email address</label>
+            <input class="form-control" id="register-email" name="email" type="email" autocomplete="email" placeholder="you@yourstore.com" />
+        </div>
+        <div class="mb-4">
+            <label class="form-label" for="register-password">Create password</label>
+            <input class="form-control" id="register-password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" />
+        </div>
+        <button class="btn btn-primary auth-submit w-100" type="button">Create account</button>
+    </form>
+
+    <p class="auth-switch">Already have an account? <a href="/login">Sign in</a></p>
+</section>

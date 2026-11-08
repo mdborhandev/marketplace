@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PoshakGhor</title>
+    <script src="~/js/auth-theme.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/shelf/assets/css/fonts.css" />
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="auth-body">
+    <button class="auth-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme">
+        <span class="auth-theme-icon" aria-hidden="true">◐</span>
+        <span data-theme-label>Dark mode</span>
+    </button>
+    <div class="auth-shell">
+        <aside class="auth-story" aria-label="PoshakGhor">
+            <a class="auth-brand" href="/shop">
+                <span class="auth-brand-mark" aria-hidden="true">P</span>
+                <span>Poshak<span class="auth-brand-light">Ghor</span><small>CURATED FASHION</small></span>
+            </a>
+            <div class="auth-story-copy">
+                <span class="auth-kicker">POSHAKGHOR · MERCHANT STUDIO</span>
+                <h1>Good style.<br />Thoughtful business.</h1>
+                <p>Everything you need to care for your collections, customers, and the details that make your store yours.</p>
+            </div>
+            <div class="auth-story-foot"><span class="auth-orbit" aria-hidden="true"></span><span>MADE FOR THE WAY YOU SELL</span></div>
+        </aside>
+        <main class="auth-main" role="main">
+            @RenderBody()
+            <footer class="auth-footer">© @DateTime.UtcNow.Year PoshakGhor · Merchant access</footer>
+        </main>
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
