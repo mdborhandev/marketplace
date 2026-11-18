@@ -1,0 +1,187 @@
+:root {
+    --bs-primary: #000000;
+    --bs-primary-rgb: 0, 0, 0;
+    --bs-secondary: #ffffff;
+    --bs-secondary-rgb: 255, 255, 255;
+    --bs-tertiary: #f5f5f5;
+    --bs-tertiary-rgb: 245, 245, 245;
+    --bs-body-color: #000000;
+    --bs-body-color-rgb: 0, 0, 0;
+    --bs-body-bg: #ffffff;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-border-color: #d9d9d9;
+    --bs-border-color-translucent: rgba(0, 0, 0, 0.12);
+    --bs-border-radius: 4px;
+    --bs-border-radius-sm: 4px;
+    --bs-border-radius-lg: 8px;
+    --bs-border-radius-xl: 16px;
+    --bs-border-radius-2xl: 24px;
+    --bs-border-radius-pill: 9999px;
+    --ay-font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --ay-font-promo: "Helvetica Neue Condensed Bold", "Arial Narrow", sans-serif;
+    --ay-space-xs: 8px;
+    --ay-space-sm: 16px;
+    --ay-space-md: 32px;
+    --ay-space-lg: 60px;
+    --ay-space-xl: 80px;
+    --ay-shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--ay-font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ay-font-sans);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+.display-4, .display-5, .display-6 {
+    font-weight: 700;
+}
+
+.ay-promo {
+    font-family: var(--ay-font-promo);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.ay-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn {
+    font-family: var(--ay-font-sans);
+    font-weight: 700;
+    border-radius: var(--bs-border-radius-xl);
+    padding: 0 16px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    color: var(--bs-secondary);
+}
+
+.btn-primary:hover {
+    background-color: var(--bs-primary);
+    color: var(--bs-secondary);
+    opacity: 0.88;
+}
+
+.btn-secondary {
+    background-color: var(--bs-secondary);
+    color: var(--bs-primary);
+    border-color: var(--bs-border-color);
+}
+
+.btn-link {
+    background: transparent;
+    color: var(--bs-primary);
+    text-decoration: none;
+    padding: 0;
+    height: auto;
+    line-height: normal;
+}
+
+.card {
+    background-color: var(--bs-surface, #ffffff);
+    color: var(--bs-on-surface, #000000);
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius-sm);
+    box-shadow: none;
+    padding: 16px;
+}
+
+.card-header,
+.card-footer {
+    background-color: transparent;
+    border-color: var(--bs-border-color);
+}
+
+.form-control,
+.form-select {
+    background-color: var(--bs-tertiary);
+    color: var(--bs-body-color);
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius-sm);
+    padding: 12px;
+    font-size: 16px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.15rem rgba(0, 0, 0, 0.12);
+}
+
+.badge {
+    border-radius: var(--bs-border-radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+}
+
+.text-bg-error {
+    background-color: #d92d20;
+    color: #ffffff;
+}
+
+.nav-link {
+    color: var(--bs-body-color);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: var(--bs-primary);
+    text-decoration: underline;
+}
+
+.ay-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: var(--bs-border-radius-pill);
+    background-color: var(--bs-secondary);
+    color: var(--bs-body-color);
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid var(--bs-border-color);
+}
+
+.ay-notice {
+    background-color: #f7e08a;
+    color: var(--bs-body-color);
+    padding: var(--ay-space-sm);
+    border-radius: var(--bs-border-radius-sm);
+}
+
+.ay-divider {
+    border-color: var(--bs-border-color);
+}
+
+@media (max-width: 767.98px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+}

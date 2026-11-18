@@ -10,7 +10,8 @@
             if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.setAttribute('data-bs-theme', savedTheme);
         } catch { }
     </script>
-    <link rel="stylesheet" href="~/css/themes/bootstrap-zephyr.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/aboutyou.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/storefront.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
