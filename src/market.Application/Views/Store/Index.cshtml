@@ -1,0 +1,73 @@
+@{
+    ViewData["Title"] = "PoshakGhor";
+    Layout = "_LayoutStorefront";
+}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <span class="badge text-bg-primary mb-3">CURATED FASHION MARKETPLACE</span>
+                <h1 class="display-4 fw-bold mb-3">Discover boutique fashion from independent vendors</h1>
+                <p class="lead text-body-secondary mb-4">A demo storefront. Products and vendors will be loaded from the backend later.</p>
+                <div class="d-flex gap-2">
+                    <a class="btn btn-primary" href="/store">Start shopping</a>
+                    <a class="btn btn-outline-primary" href="/register">Become a vendor</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="h5 mb-3">Featured collection</h2>
+                        <p class="text-body-secondary mb-0">Handpicked styles for the season.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <h2 class="h3 mb-0">Featured products</h2>
+            <a class="link-primary" href="/store">View all</a>
+        </div>
+        <div class="row g-4">
+            @for (var i = 1; i <= 6; i++)
+            {
+                <div class="col-sm-6 col-lg-4">
+                    <article class="card h-100 shadow-sm">
+                        <div class="ratio ratio-4x3 bg-secondary-subtle"></div>
+                        <div class="card-body">
+                            <h3 class="h6 mb-1">Demo Product @i</h3>
+                            <p class="text-body-secondary small mb-2">Vendor Studio @((i % 3) + 1)</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <strong>৳ @(1200 + (i * 350))</strong>
+                                <button class="btn btn-outline-primary btn-sm" type="button">Add to cart</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="h3 mb-4">Shop by category</h2>
+        <div class="row g-3">
+            @foreach (var category in new[] { "Clothing", "Accessories", "Footwear", "Jewelry" })
+            {
+                <div class="col-6 col-md-3">
+                    <a class="card text-decoration-none h-100" href="/store">
+                        <div class="card-body text-center">
+                            <h3 class="h6 mb-0">@category</h3>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
