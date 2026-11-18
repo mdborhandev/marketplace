@@ -1,0 +1,16 @@
+.storefront-body {
+    background: var(--bs-body-bg);
+}
+
+.storefront-header {
+    background: rgba(var(--bs-body-bg-rgb), 0.92);
+    backdrop-filter: blur(12px);
+}
+
+.storefront-main {
+    min-height: 60vh;
+}
+
+.storefront-footer {
+    background: var(--bs-tertiary-bg);
+}

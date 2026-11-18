@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PoshakGhor</title>
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('shelf.theme');
+            if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        } catch { }
+    </script>
+    <link rel="stylesheet" href="~/css/themes/bootstrap-zephyr.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/storefront.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="storefront-body">
+    <header class="storefront-header border-bottom">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="/shop">PoshakGhor</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#storefrontNav" aria-controls="storefrontNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="storefrontNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/shop">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/components">Components</a></li>
+                    </ul>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-primary btn-sm" href="/login">Sign in</a>
+                        <a class="btn btn-primary btn-sm" href="/register">Create account</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="storefront-main" role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="storefront-footer border-top py-4 mt-5">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+            <span class="text-body-secondary small">© @DateTime.UtcNow.Year PoshakGhor</span>
+            <span class="text-body-secondary small">Curated fashion marketplace</span>
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

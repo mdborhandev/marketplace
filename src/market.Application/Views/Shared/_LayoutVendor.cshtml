@@ -1,0 +1,56 @@
+@{
+    var activeAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+<!doctype html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PoshakGhor Vendor</title>
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('shelf.theme');
+            if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.setAttribute('data-bs-theme', savedTheme);
+        } catch { }
+    </script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/shelf/assets/css/fonts.css" />
+    <link rel="stylesheet" href="~/shelf/assets/css/shelf.css" />
+    <link rel="stylesheet" href="~/css/themes/bootstrap-zephyr.min.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <aside class="nav" aria-label="Vendor navigation">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">P</span>
+            <span class="brand-txt"><span class="brand-name">PoshakGhor</span><span class="brand-sub">VENDOR STUDIO</span></span>
+        </div>
+        <div class="nav-scroll">
+            <div class="nav-grp">Workspace</div>
+            <a class="nav-item @(activeAction == "VendorDashboard" ? "is-on" : "")" href="/vendor/dashboard"><span>Dashboard</span></a>
+            <a class="nav-item @(activeAction == "VendorProducts" ? "is-on" : "")" href="/vendor/products"><span>Products</span></a>
+            <a class="nav-item @(activeAction == "VendorOrders" ? "is-on" : "")" href="/vendor/orders"><span>Orders</span></a>
+            <div class="nav-grp">Account</div>
+            <a class="nav-item" href="/login"><span>Sign in</span></a>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="top">
+            <h1>@ViewData["Title"]</h1>
+            <div class="d-flex align-items-center gap-2 ms-auto">
+                <button class="btn btn--ghost" type="button" data-act="theme" aria-label="Switch theme">
+                    <span class="d-none d-sm-inline" data-theme-label>Dark mode</span>
+                </button>
+            </div>
+        </header>
+        <main class="page" id="main" role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/shelf/assets/js/shelf.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
