@@ -1,0 +1,11 @@
+@model string
+@{
+    ViewData["Title"] = "Verify your email";
+}
+
+<section class="auth-card" aria-labelledby="verification-title">
+    <span class="auth-kicker">CHECK YOUR INBOX</span>
+    <h2 id="verification-title">Verify your email</h2>
+    <p class="auth-intro">We sent a verification link to <strong>@Model</strong>. Please verify your email before signing in.</p>
+    <p class="auth-switch"><a href="/login">Back to sign in</a></p>
+</section>

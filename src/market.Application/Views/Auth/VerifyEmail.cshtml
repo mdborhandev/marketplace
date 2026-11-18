@@ -1,0 +1,19 @@
+@model bool
+@{
+    ViewData["Title"] = "Email verification";
+}
+
+<section class="auth-card" aria-labelledby="verify-title">
+    <span class="auth-kicker">EMAIL VERIFICATION</span>
+    <h2 id="verify-title">Email verification</h2>
+    @if (Model)
+    {
+        <p class="auth-intro">Your email has been verified. You can now sign in.</p>
+        <p class="auth-switch"><a href="/login">Sign in</a></p>
+    }
+    else
+    {
+        <p class="auth-intro">The verification link is invalid or has expired.</p>
+        <p class="auth-switch"><a href="/login">Back to sign in</a></p>
+    }
+</section>
