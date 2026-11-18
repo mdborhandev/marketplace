@@ -12,5 +12,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" />
   </ItemGroup>
 </Project>

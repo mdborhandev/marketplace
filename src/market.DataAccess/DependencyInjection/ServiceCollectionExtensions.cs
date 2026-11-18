@@ -3,7 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using market.Core.Interfaces.Infrastructure;
 using market.DataAccess.Context;
+using market.Core.Interfaces.Repositories;
+using market.Core.Interfaces.Services;
 using market.DataAccess.Repositories.Base;
+using market.DataAccess.Repositories.Implementations;
+using market.DataAccess.Services.Implementations;
 using market.DataAccess.UnitOfWork;
 
 namespace market.DataAccess.DependencyInjection;
@@ -18,7 +22,15 @@ public static class ServiceCollectionExtensions
         else
             services.AddDbContext<marketDbContext>(options => options.UseNpgsql("Host=localhost;Database=market;Username=market;Password=local-development-only"));
         services.AddScoped<IUnitOfWork, market.DataAccess.UnitOfWork.UnitOfWork>();
-        services.AddScoped(typeof(market.Core.Interfaces.Repositories.IRepository<>), typeof(market.DataAccess.Repositories.Base.Repository<>));
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IRoleRepository, RoleRepository>();
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IEmailVerificationTokenRepository, EmailVerificationTokenRepository>();
+        services.AddScoped<IPasswordResetTokenRepository, PasswordResetTokenRepository>();
+        services.AddScoped<IPasswordHasher, PasswordHasher>();
+        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IAuthService, AuthService>();
         return services;
     }
 }
