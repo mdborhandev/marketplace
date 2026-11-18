@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Overlays and feedback";
+}
+
+<div class="container-fluid px-0 pb-5">
+    <partial name="_ComponentNav" />
+    <header class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-4 mb-5">
+        <div>
+            <span class="text-uppercase small fw-semibold text-primary">DEVELOPER REFERENCE</span>
+            <h1 class="display-5 mb-2">Overlays and feedback</h1>
+            <p class="lead text-body-secondary mb-0">Badges, alerts, dropdowns, modals, and toasts.</p>
+        </div>
+        <a class="btn btn-outline-secondary" href="/components">Back to component library</a>
+    </header>
+
+    <section class="mb-5" aria-labelledby="feedback-title">
+        <div class="card"><div class="card-body">
+            <div class="d-flex flex-wrap gap-2 mb-4"><span class="badge text-bg-primary">New</span><span class="badge text-bg-secondary">Draft</span><span class="badge text-bg-success">In stock</span><span class="badge text-bg-warning">Low stock</span><span class="badge text-bg-danger">Out of stock</span><span class="badge rounded-pill text-bg-info">Featured</span></div>
+            <div class="alert alert-success" role="status"><strong>Saved.</strong> Your collection changes are ready to publish.</div>
+            <div class="alert alert-warning mb-0" role="alert"><strong>Stock is running low.</strong> Review the remaining sizes before your next campaign.</div>
+        </div></div>
+    </section>
+
+    <section class="mb-5" aria-labelledby="overlays-title">
+        <div class="card"><div class="card-body d-flex flex-wrap align-items-center gap-3">
+            <div class="dropdown"><button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">More actions</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#overlays-title">Edit details</a></li><li><a class="dropdown-item" href="#overlays-title">Duplicate item</a></li><li><hr class="dropdown-divider" /></li><li><a class="dropdown-item text-danger" href="#overlays-title">Archive</a></li></ul></div>
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#sample-modal">Open modal</button>
+            <button class="btn btn-outline-primary" id="show-sample-toast" type="button">Show toast</button>
+            <div class="modal fade" id="sample-modal" tabindex="-1" aria-labelledby="sample-modal-title" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h2 class="modal-title fs-5" id="sample-modal-title">Publish collection?</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body">This is a preview of a confirmation modal for a merchant action.</div><div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirm</button></div></div></div></div>
+            <div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="sample-toast" class="toast" role="status" aria-live="polite" aria-atomic="true"><div class="toast-header"><strong class="me-auto">PoshakGhor</strong><small>Just now</small><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">Your preview is up to date.</div></div></div>
+        </div></div>
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('show-sample-toast')?.addEventListener('click', () => {
+            bootstrap.Toast.getOrCreateInstance(document.getElementById('sample-toast')).show();
+        });
+    </script>
+}
