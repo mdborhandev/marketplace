@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/shelf/assets/css/fonts.css" />
     <link rel="stylesheet" href="~/shelf/assets/css/shelf.css" />
-    <link rel="stylesheet" href="~/css/themes/bootstrap-zephyr.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/aboutyou.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
@@ -39,9 +39,6 @@
         <header class="top">
             <h1>@ViewData["Title"]</h1>
             <div class="d-flex align-items-center gap-2 ms-auto">
-                <button class="btn btn--ghost" type="button" data-act="theme" aria-label="Switch theme">
-                    <span class="d-none d-sm-inline" data-theme-label>Dark mode</span>
-                </button>
             </div>
         </header>
         <main class="page" id="main" role="main">

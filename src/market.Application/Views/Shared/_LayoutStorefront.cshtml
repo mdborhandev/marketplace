@@ -12,7 +12,6 @@
     </script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/aboutyou.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/storefront.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body class="storefront-body">
@@ -28,7 +27,7 @@
                         <li class="nav-item"><a class="nav-link" href="/shop">Shop</a></li>
                         <li class="nav-item"><a class="nav-link" href="/components">Components</a></li>
                     </ul>
-                    <div class="d-flex gap-2">
+                    <div class="d-flex gap-2 align-items-center">
                         <a class="btn btn-outline-primary btn-sm" href="/login">Sign in</a>
                         <a class="btn btn-primary btn-sm" href="/register">Create account</a>
                     </div>
