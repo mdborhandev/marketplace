@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using market.Core.Interfaces.Infrastructure;
 using market.DataAccess.Context;
+using market.DataAccess.Repositories.Base;
 using market.DataAccess.UnitOfWork;
 
 namespace market.DataAccess.DependencyInjection;
@@ -17,6 +18,7 @@ public static class ServiceCollectionExtensions
         else
             services.AddDbContext<marketDbContext>(options => options.UseNpgsql("Host=localhost;Database=market;Username=market;Password=local-development-only"));
         services.AddScoped<IUnitOfWork, market.DataAccess.UnitOfWork.UnitOfWork>();
+        services.AddScoped(typeof(market.Core.Interfaces.Repositories.IRepository<>), typeof(market.DataAccess.Repositories.Base.Repository<>));
         return services;
     }
 }
